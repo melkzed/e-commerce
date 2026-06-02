@@ -21,7 +21,7 @@ export function ProfileForm({
       <div className="flow-heading">
         <div>
           <span>Conta do cliente</span>
-          <h2>Perfil de orcamento</h2>
+          <h2>Dados para contato</h2>
         </div>
       </div>
 
@@ -45,7 +45,7 @@ export function ProfileForm({
           <>
             <div>
               <strong>Entre para solicitar</strong>
-              <span>Google com Supabase Auth</span>
+              <span>Use sua conta Google</span>
             </div>
             <button className="primary-flow-action compact" type="button" onClick={auth.handleGoogleLogin}>
               <Chrome size={17} />
@@ -77,7 +77,7 @@ export function ProfileForm({
           <input
             value={auth.profile.fullName}
             onChange={(event) => auth.handleProfileChange("fullName", event.target.value)}
-            placeholder="Nome do responsavel"
+            placeholder="Seu nome"
           />
         </label>
         <label>
@@ -89,7 +89,7 @@ export function ProfileForm({
           <input
             value={auth.profile.companyName}
             onChange={(event) => auth.handleProfileChange("companyName", event.target.value)}
-            placeholder="Razao social ou marca"
+            placeholder="Nome da empresa ou marca"
           />
         </label>
         <label>
@@ -98,7 +98,7 @@ export function ProfileForm({
             value={auth.profile.taxId}
             disabled={auth.taxIdLocked}
             onChange={(event) => auth.handleProfileChange("taxId", event.target.value)}
-            placeholder="Documento cadastrado"
+            placeholder="CPF ou CNPJ"
           />
         </label>
         <label>
@@ -106,7 +106,7 @@ export function ProfileForm({
           <input
             value={auth.profile.phone}
             onChange={(event) => auth.handleProfileChange("phone", event.target.value)}
-            placeholder="WhatsApp comercial"
+            placeholder="WhatsApp para contato"
           />
         </label>
         <label>
@@ -122,7 +122,7 @@ export function ProfileForm({
           <input
             value={auth.profile.storeName}
             onChange={(event) => auth.handleProfileChange("storeName", event.target.value)}
-            placeholder="Como a loja sera chamada"
+            placeholder="Nome que vai aparecer na loja"
           />
         </label>
       </div>
@@ -136,7 +136,7 @@ export function ProfileForm({
 
       <div className="lock-note">
         <LockKeyhole size={15} />
-        Email e CPF/CNPJ ficam protegidos apos o cadastro.
+        Seus dados ficam salvos para facilitar o atendimento.
       </div>
     </section>
   );

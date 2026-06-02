@@ -52,10 +52,12 @@ export function usePlatformAuth() {
   const [profileNotice, setProfileNotice] = useState("");
   const [adminRequests, setAdminRequests] = useState<QuoteRequestRow[]>([]);
   const [adminLoading, setAdminLoading] = useState(false);
+  const [authActionLoading, setAuthActionLoading] = useState(false);
 
   const accountEmail = session?.user.email || profile.email;
+  const isConnected = Boolean(session?.user);
   const isLoggedIn = Boolean(session?.user || demoMode);
-  const isAdmin = accountEmail.toLowerCase() === ADMIN_EMAIL;
+  const isAdmin = Boolean(session?.user?.email?.toLowerCase() === ADMIN_EMAIL);
 
   useEffect(() => {
     const storedDemo =
@@ -78,6 +80,11 @@ export function usePlatformAuth() {
     }
 
     let active = true;
+    const fallbackTimer = window.setTimeout(() => {
+      if (active) {
+        setAuthLoading(false);
+      }
+    }, 2500);
 
     supabase.auth.getSession().then(({ data }) => {
       if (!active) {
@@ -86,6 +93,7 @@ export function usePlatformAuth() {
 
       setSession(data.session);
       setAuthLoading(false);
+      window.clearTimeout(fallbackTimer);
     });
 
     const {
@@ -96,6 +104,7 @@ export function usePlatformAuth() {
 
     return () => {
       active = false;
+      window.clearTimeout(fallbackTimer);
       subscription.unsubscribe();
     };
   }, [supabase]);
@@ -180,6 +189,77 @@ export function usePlatformAuth() {
 
     if (error) {
       setProfileNotice("Nao foi possivel iniciar o login com Google.");
+    }
+  };
+
+  const handleEmailAuth = async ({
+    email,
+    fullName,
+    mode,
+    password
+  }: {
+    email: string;
+    fullName?: string;
+    mode: "login" | "register";
+    password: string;
+  }) => {
+    if (!supabase) {
+      setProfileNotice("Configure o Supabase para liberar cadastro e login por email.");
+      return;
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanEmail || password.length < 6) {
+      setProfileNotice("Informe um email valido e uma senha com pelo menos 6 caracteres.");
+      return;
+    }
+
+    setAuthActionLoading(true);
+    setProfileNotice("");
+
+    try {
+      if (mode === "register") {
+        const { data, error } = await supabase.auth.signUp({
+          email: cleanEmail,
+          password,
+          options: {
+            data: {
+              full_name: fullName?.trim() || cleanEmail
+            },
+            emailRedirectTo: window.location.origin
+          }
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data.session) {
+          setProfileNotice("Conta criada. Confirme seu email para entrar.");
+        } else {
+          setProfileNotice("Conta criada e conectada.");
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: cleanEmail,
+          password
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        setProfileNotice("Conta conectada.");
+      }
+    } catch {
+      setProfileNotice(
+        mode === "register"
+          ? "Nao foi possivel criar a conta agora."
+          : "Email ou senha incorretos."
+      );
+    } finally {
+      setAuthActionLoading(false);
     }
   };
 
@@ -276,13 +356,16 @@ export function usePlatformAuth() {
     accountEmail,
     adminLoading,
     adminRequests,
+    authActionLoading,
     authLoading,
     demoMode,
+    handleEmailAuth,
     handleDemoLogin,
     handleGoogleLogin,
     handleLogout,
     handleProfileChange,
     isAdmin,
+    isConnected,
     isLoggedIn,
     profile,
     profileLoading,

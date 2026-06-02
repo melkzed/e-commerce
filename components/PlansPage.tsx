@@ -1,20 +1,17 @@
 "use client";
 
 import { ArrowRight, Check, Layers3, WalletCards } from "lucide-react";
-import { PlatformNav } from "@/components/PlatformNav";
 import { subscriptionPlans } from "@/lib/platform";
 
 export function PlansPage() {
   return (
     <main className="flow-shell">
-      <PlatformNav variant="light" />
-
       <section className="flow-hero compact-hero">
-        <p>Assinaturas</p>
-        <h1>Tres niveis de loja online para voce precificar do seu jeito.</h1>
+        <p>Planos</p>
+        <h1>Escolha o nivel ideal para comecar sua loja online.</h1>
         <span>
-          Os valores nao aparecem publicamente. O cliente solicita orcamento e voce
-          decide o preco final apos analisar escopo, volume e integracoes.
+          Voce nao precisa entender termos tecnicos. Veja o que cada plano cobre e
+          peca uma analise para saber qual combina com o seu momento.
         </span>
       </section>
 
@@ -45,10 +42,10 @@ export function PlansPage() {
         <Layers3 size={24} />
         <div>
           <h2>Quer transformar um plano em proposta?</h2>
-          <p>O chatbot recomenda o nivel inicial com base no briefing do cliente.</p>
+          <p>Responda algumas perguntas e receba uma sugestao de plano para sua loja.</p>
         </div>
         <a href="/orcamento" className="primary-flow-action">
-          Solicitar orcamento
+          Pedir analise
           <ArrowRight size={17} />
         </a>
       </section>

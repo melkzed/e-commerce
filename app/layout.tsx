@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { PlatformNav } from "@/components/PlatformNav";
+import { PlatformFooter } from "@/components/PlatformFooter";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Melkzedek Tech | Plataforma de Lojas Online",
+  title: "Melkzedek Tech | Plataforma de Loja Online",
   description:
-    "Plataforma SaaS para assinatura de lojas online, orcamentos guiados, perfil do cliente, emails e painel administrativo."
+    "Plataforma para criar loja online, controlar pedidos, estoque, clientes, pagamentos e relatorios em um so lugar."
 };
 
 export default function RootLayout({
@@ -14,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <PlatformNav />
+        {children}
+        <PlatformFooter />
+      </body>
     </html>
   );
 }

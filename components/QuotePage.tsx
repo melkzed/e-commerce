@@ -8,16 +8,13 @@ import {
   Bot,
   Check,
   ChevronRight,
-  Chrome,
   Loader2,
-  LockKeyhole,
   RefreshCw,
   Send,
-  UserRound,
   WalletCards
 } from "lucide-react";
+import { AuthAccessCard } from "@/components/AuthAccessCard";
 import { useMemo, useState } from "react";
-import { PlatformNav } from "@/components/PlatformNav";
 import { usePlatformAuth } from "@/components/usePlatformAuth";
 import { sendQuoteEmails } from "@/lib/emailjs";
 import {
@@ -29,7 +26,6 @@ import {
   type QuoteAnswers,
   type QuoteQuestion
 } from "@/lib/platform";
-import { isSupabaseConfigured } from "@/lib/supabase/client";
 
 type RequestStatus = "idle" | "saving" | "success" | "error";
 
@@ -97,8 +93,8 @@ export function QuotePage() {
   };
 
   const submitQuoteRequest = async () => {
-    if (!auth.isLoggedIn) {
-      setRequestNotice("Entre com Google ou modo demo antes de solicitar o orcamento.");
+    if (!auth.isConnected) {
+      setRequestNotice("Entre na sua conta antes de enviar o pedido.");
       return;
     }
 
@@ -251,8 +247,6 @@ export function QuotePage() {
 
   return (
     <main className="flow-shell">
-      <PlatformNav variant="light" />
-
       <section className="quote-only-page">
         <div className="quote-only-head">
           <a href="/" className="back-link">
@@ -260,17 +254,17 @@ export function QuotePage() {
             Voltar
           </a>
           <div>
-            <p>Orcamento guiado</p>
-            <h1>Chatbot de requisitos</h1>
-            <span>Responda 5 perguntas. O valor sera analisado depois.</span>
+            <p>Pedido guiado</p>
+            <h1>Conte o que sua loja precisa.</h1>
+            <span>Responda 5 perguntas simples. Depois eu analiso e indico o melhor caminho.</span>
           </div>
         </div>
 
         <div className="quote-focus-shell">
-          <section className={clsx("flow-panel quote-workspace quote-chat-card", !auth.isLoggedIn && "locked-chat")}>
+          <section className={clsx("flow-panel quote-workspace quote-chat-card", !auth.isConnected && "locked-chat")}>
               <div className="flow-heading">
                 <div>
-                  <span>Chatbot de requisitos</span>
+                  <span>Pedido da loja</span>
                   <h2>{quoteComplete ? "Resumo pronto" : currentQuestion?.prompt}</h2>
                 </div>
                 <strong>{answeredCount}/5</strong>
@@ -284,8 +278,8 @@ export function QuotePage() {
                 <div className="bot-message">
                   <Bot size={18} />
                   <p>
-                    Vou fazer perguntas diretas para montar um planejamento enxuto e
-                    indicar qual assinatura combina com seu momento.
+                    Vou te guiar passo a passo. No final, voce recebe uma sugestao de
+                    plano para comecar sem pagar por coisa desnecessaria.
                   </p>
                 </div>
 
@@ -424,53 +418,23 @@ export function QuotePage() {
               )}
           </section>
 
-          {!auth.isLoggedIn && (
+          {!auth.isConnected && (
             <div className="quote-login-overlay">
-              <section className="login-required-card">
-                <div className="login-card-icon">
-                  <LockKeyhole size={22} />
-                </div>
-                <div>
-                  <span>Login necessario</span>
-                  <h2>Entre para responder o chatbot</h2>
-                  <p>
-                    O orcamento precisa estar conectado ao seu perfil para gerar o
-                    resumo, salvar no Supabase e enviar a confirmacao por email.
-                  </p>
-                </div>
-
-                <div className="login-card-panel">
-                  <div className="auth-avatar">
-                    <UserRound size={20} />
-                  </div>
-                  <div>
-                    <strong>Acesso do cliente</strong>
-                    <span>Google com Supabase Auth</span>
-                  </div>
-                </div>
-
-                <button className="primary-flow-action full" type="button" onClick={auth.handleGoogleLogin}>
-                  <Chrome size={17} />
-                  Entrar com Google
-                </button>
-
-                {!isSupabaseConfigured && (
-                  <button className="secondary-flow-action full" type="button" onClick={auth.handleDemoLogin}>
-                    Entrar em modo demo
-                  </button>
-                )}
-
-                {auth.profileNotice && <p className="flow-note">{auth.profileNotice}</p>}
-              </section>
+              <AuthAccessCard
+                auth={auth}
+                eyebrow="Login necessario"
+                title="Entre para salvar seu pedido"
+                text="Assim seu pedido fica ligado ao seu perfil e voce recebe a confirmacao por email."
+              />
             </div>
           )}
         </div>
 
-        {auth.isLoggedIn && !completeness.isComplete && (
+        {auth.isConnected && !completeness.isComplete && (
           <aside className="flow-panel quote-profile-reminder">
             <div>
               <span>Perfil incompleto</span>
-              <strong>Antes de enviar, complete seus dados cadastrais.</strong>
+              <strong>Antes de enviar, complete seus dados de contato.</strong>
             </div>
             <a className="secondary-flow-action" href="/perfil">
               Abrir perfil

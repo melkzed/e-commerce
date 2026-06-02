@@ -1,14 +1,14 @@
 # Melkzedek Store Platform
 
-Plataforma SaaS para clientes solicitarem assinatura de lojas online com login, perfil, chatbot de 5 perguntas, resumo de requisitos, envio por EmailJS e painel admin.
+Plataforma para clientes pedirem uma loja online com login, perfil, pedido guiado, resumo simples, envio por EmailJS e painel admin.
 
 ## Paginas
 
-- `/`: apresentacao da plataforma com tema escuro, visual roxo e cena 3D interativa.
-- `/orcamento`: chatbot de 5 perguntas para solicitar orcamento.
-- `/perfil`: dados do cliente e documento cadastrado.
-- `/assinaturas`: os 3 tipos de assinatura, sem preco publico.
-- `/admin`: painel de solicitacoes para `melkzedektech@gmail.com`.
+- `/`: apresentacao da plataforma com tema escuro, imagens e rede neural visual.
+- `/orcamento`: pedido guiado com 5 perguntas simples.
+- `/perfil`: dados do cliente, liberado apenas depois do login.
+- `/assinaturas`: os 3 planos, sem preco publico.
+- `/admin`: painel de pedidos liberado apenas para `melkzedd@gmail.com`.
 
 ## Rodar localmente
 
@@ -39,7 +39,7 @@ NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID=
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
 ```
 
-Sem essas variaveis, a tela continua funcionando em modo demo, mas Supabase, Google e EmailJS ficam sinalizados como pendentes.
+Sem essas variaveis, Supabase, login e EmailJS ficam sinalizados como pendentes.
 
 ## Supabase
 
@@ -53,7 +53,7 @@ Tabelas criadas:
 - `profiles`: dados do cliente, documento e empresa.
 - `quote_requests`: solicitacoes de orcamento, respostas e status.
 
-O painel admin libera a lista completa para `melkzedektech@gmail.com`.
+O painel admin libera a lista completa para `melkzedd@gmail.com`.
 
 ## EmailJS
 

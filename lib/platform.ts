@@ -1,4 +1,4 @@
-export const ADMIN_EMAIL = "melkzedektech@gmail.com";
+export const ADMIN_EMAIL = "melkzedd@gmail.com";
 
 export type SubscriptionKey = "starter" | "growth" | "scale";
 
@@ -78,45 +78,56 @@ export const demoProfile: ClientProfile = {
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
     key: "starter",
-    name: "Loja Start",
-    signal: "Entrada",
-    idealFor: "Primeira loja online com operacao enxuta.",
+    name: "Loja Essencial",
+    signal: "Comeco",
+    idealFor: "Para quem quer comecar a vender online com uma loja organizada.",
     coverage: [
-      "Catalogo inicial",
-      "Checkout e pedidos",
-      "Painel de produtos",
-      "Base para SEO",
-      "Suporte de lancamento"
+      "Cadastro de produtos",
+      "Carrinho e pedidos",
+      "Painel para gerenciar a loja",
+      "Base para aparecer no Google",
+      "Apoio para colocar no ar",
+      "Layout responsivo",
+      "Pagina inicial da loja",
+      "Formulario de contato"
     ],
     accent: "#0f766e"
   },
   {
     key: "growth",
-    name: "Loja Growth",
+    name: "Loja Profissional",
     signal: "Crescimento",
-    idealFor: "Marcas que precisam vender, medir e automatizar.",
+    idealFor: "Para quem ja quer vender melhor, acompanhar estoque e fazer campanhas.",
     coverage: [
-      "Tudo da Loja Start",
+      "Tudo da Loja Essencial",
       "Cupons e campanhas",
-      "Estoque com alertas",
-      "Integracoes de frete",
-      "Dashboard comercial"
+      "Avisos de estoque",
+      "Opcoes de frete",
+      "Relatorio de vendas",
+      "Organizacao de clientes",
+      "Produtos em destaque",
+      "Melhorias para conversao",
+      "Suporte para campanhas"
     ],
-    accent: "#b45309"
+    accent: "#0284c7"
   },
   {
     key: "scale",
-    name: "Loja Scale",
+    name: "Loja Completa",
     signal: "Escala",
-    idealFor: "Operacoes com alto volume, equipe e integracoes.",
+    idealFor: "Para lojas com equipe, muitos pedidos e necessidade de mais controle.",
     coverage: [
-      "Tudo da Loja Growth",
-      "Multiplas permissoes",
-      "Automacoes avancadas",
-      "Marketplace e API",
-      "SLA prioritario"
+      "Tudo da Loja Profissional",
+      "Acesso para equipe",
+      "Automacoes de atendimento",
+      "Integracoes avancadas",
+      "Prioridade no suporte",
+      "Controle mais completo de pedidos",
+      "Relatorios de desempenho",
+      "Base para varias rotinas da loja",
+      "Preparacao para alto volume"
     ],
-    accent: "#7c3aed"
+    accent: "#db2777"
   }
 ];
 
@@ -124,54 +135,54 @@ export const quoteQuestions: QuoteQuestion[] = [
   {
     id: "business_model",
     label: "Modelo",
-    prompt: "O que sua loja vai vender e para quem?",
-    helper: "Exemplo: moda feminina para varejo local, pecas sob encomenda, eletronicos B2C.",
+    prompt: "O que voce quer vender na sua loja?",
+    helper: "Exemplo: roupas femininas, doces, suplementos, pecas, cursos ou servicos.",
     type: "text",
-    placeholder: "Descreva o nicho, publico e tipo de produto."
+    placeholder: "Conte com suas palavras o que voce vende."
   },
   {
     id: "catalog_size",
     label: "Catalogo",
-    prompt: "Quantos produtos voce pretende cadastrar no inicio?",
-    helper: "Uma estimativa ja ajuda a prever estrutura, filtros e rotina de cadastro.",
+    prompt: "Quantos produtos voce quer colocar no comeco?",
+    helper: "Pode ser uma estimativa. Isso ajuda a montar uma loja do tamanho certo.",
     type: "number",
     placeholder: "Ex.: 40"
   },
   {
     id: "must_have_features",
     label: "Recursos",
-    prompt: "Quais recursos sao obrigatorios para lancar?",
-    helper: "Selecione apenas o que precisa estar pronto na primeira versao.",
+    prompt: "O que sua loja precisa ter?",
+    helper: "Marque o que voce acha importante para vender bem.",
     type: "multi",
     options: [
-      "Checkout online",
-      "Gestao de estoque",
-      "Frete integrado",
+      "Pagamento online",
+      "Controle de estoque",
+      "Calculo de frete",
       "Cupons e campanhas",
-      "WhatsApp comercial",
-      "Marketplace ou ERP",
-      "Blog e SEO",
+      "Botao de WhatsApp",
+      "Integracao com outro sistema",
+      "Conteudo para Google",
       "Area do cliente"
     ]
   },
   {
     id: "launch_window",
     label: "Prazo",
-    prompt: "Qual prazo ideal para colocar a loja no ar?",
-    helper: "Isso ajuda a separar MVP, etapa de melhoria e integracoes futuras.",
+    prompt: "Quando voce quer colocar a loja no ar?",
+    helper: "Isso ajuda a organizar o que entra agora e o que pode ficar para depois.",
     type: "single",
     options: ["Ate 15 dias", "30 dias", "60 dias", "Sem pressa definida"]
   },
   {
     id: "operation_level",
     label: "Operacao",
-    prompt: "Como voce imagina a operacao nos proximos 90 dias?",
-    helper: "Escolha o cenario mais proximo para orientar a assinatura inicial.",
+    prompt: "Como voce imagina sua loja nos proximos meses?",
+    helper: "Escolha a opcao que mais parece com o seu momento.",
     type: "single",
     options: [
-      "Validar vendas com baixo volume",
-      "Crescer campanhas e pedidos semanais",
-      "Operar com equipe e alto volume"
+      "Comecar e testar as primeiras vendas",
+      "Vender toda semana com campanhas",
+      "Trabalhar com equipe e muitos pedidos"
     ]
   }
 ];
@@ -179,9 +190,9 @@ export const quoteQuestions: QuoteQuestion[] = [
 export const requestPipeline = [
   "Novo",
   "Perfil revisado",
-  "Escopo planejado",
+  "Plano escolhido",
   "Proposta enviada",
-  "Assinatura ativa"
+  "Cliente ativo"
 ];
 
 export function getAnswerText(value: string | string[] | undefined) {
@@ -206,8 +217,8 @@ export function recommendPlan(answers: QuoteAnswers) {
 
   const needsScale =
     catalogSize >= 150 ||
-    operationLevel.includes("alto volume") ||
-    features.some((feature) => ["Marketplace ou ERP", "Area do cliente"].includes(feature));
+    operationLevel.includes("muitos pedidos") ||
+    features.some((feature) => ["Integracao com outro sistema", "Area do cliente"].includes(feature));
 
   if (needsScale) {
     return getPlanByKey("scale");
@@ -217,7 +228,7 @@ export function recommendPlan(answers: QuoteAnswers) {
     catalogSize >= 50 ||
     urgentLaunch ||
     features.some((feature) =>
-      ["Gestao de estoque", "Frete integrado", "Cupons e campanhas"].includes(feature)
+      ["Controle de estoque", "Calculo de frete", "Cupons e campanhas"].includes(feature)
     );
 
   if (needsGrowth) {

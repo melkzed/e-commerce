@@ -20,7 +20,7 @@ create table if not exists public.quote_requests (
   profile_snapshot jsonb not null default '{}'::jsonb,
   answers jsonb not null default '{}'::jsonb,
   status text not null default 'novo',
-  admin_email text not null default 'melkzedektech@gmail.com',
+  admin_email text not null default 'melkzedd@gmail.com',
   email_status text not null default 'pending',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -52,7 +52,7 @@ create policy "profiles_select_own_or_admin"
 on public.profiles for select
 using (
   auth.uid() = id
-  or auth.jwt() ->> 'email' = 'melkzedektech@gmail.com'
+  or auth.jwt() ->> 'email' = 'melkzedd@gmail.com'
 );
 
 drop policy if exists "profiles_insert_own" on public.profiles;
@@ -65,11 +65,11 @@ create policy "profiles_update_own_or_admin"
 on public.profiles for update
 using (
   auth.uid() = id
-  or auth.jwt() ->> 'email' = 'melkzedektech@gmail.com'
+  or auth.jwt() ->> 'email' = 'melkzedd@gmail.com'
 )
 with check (
   auth.uid() = id
-  or auth.jwt() ->> 'email' = 'melkzedektech@gmail.com'
+  or auth.jwt() ->> 'email' = 'melkzedd@gmail.com'
 );
 
 drop policy if exists "quote_requests_select_own_or_admin" on public.quote_requests;
@@ -77,7 +77,7 @@ create policy "quote_requests_select_own_or_admin"
 on public.quote_requests for select
 using (
   auth.uid() = user_id
-  or auth.jwt() ->> 'email' = 'melkzedektech@gmail.com'
+  or auth.jwt() ->> 'email' = 'melkzedd@gmail.com'
 );
 
 drop policy if exists "quote_requests_insert_own" on public.quote_requests;
@@ -88,5 +88,5 @@ with check (auth.uid() = user_id);
 drop policy if exists "quote_requests_update_admin" on public.quote_requests;
 create policy "quote_requests_update_admin"
 on public.quote_requests for update
-using (auth.jwt() ->> 'email' = 'melkzedektech@gmail.com')
-with check (auth.jwt() ->> 'email' = 'melkzedektech@gmail.com');
+using (auth.jwt() ->> 'email' = 'melkzedd@gmail.com')
+with check (auth.jwt() ->> 'email' = 'melkzedd@gmail.com');

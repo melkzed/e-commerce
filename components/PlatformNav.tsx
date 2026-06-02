@@ -2,14 +2,21 @@
 
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Bot, LayoutDashboard, UserRound, WalletCards } from "lucide-react";
+import { 
+  Home, 
+  FileText, 
+  CreditCard, 
+  User, 
+  Settings,
+  Sparkles 
+} from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "Home", icon: ArrowUpRight },
-  { href: "/orcamento", label: "Orcamento", icon: Bot },
-  { href: "/assinaturas", label: "Assinaturas", icon: WalletCards },
-  { href: "/perfil", label: "Perfil", icon: UserRound },
-  { href: "/admin", label: "Admin", icon: LayoutDashboard }
+  { href: "/", label: "Home", icon: Home },
+  { href: "/orcamento", label: "Pedidos", icon: FileText },
+  { href: "/assinaturas", label: "Planos", icon: CreditCard },
+  { href: "/perfil", label: "Perfil", icon: User },
+  { href: "/admin", label: "Admin", icon: Settings }
 ];
 
 export function PlatformNav({ variant = "dark" }: { variant?: "dark" | "light" }) {
@@ -18,10 +25,10 @@ export function PlatformNav({ variant = "dark" }: { variant?: "dark" | "light" }
   return (
     <header className={clsx("platform-nav", variant)}>
       <a className="platform-brand" href="/">
-        <span>M</span>
+        <span>✨</span>
         <div>
           <strong>Melkzedek Tech</strong>
-          <small>Store OS</small>
+          <small>Plataforma Pro</small>
         </div>
       </a>
 
@@ -31,9 +38,14 @@ export function PlatformNav({ variant = "dark" }: { variant?: "dark" | "light" }
           const active = pathname === item.href;
 
           return (
-            <a key={item.href} className={clsx(active && "active")} href={item.href}>
-              <Icon size={15} />
-              {item.label}
+            <a 
+              key={item.href} 
+              className={clsx(active && "active")} 
+              href={item.href}
+              title={item.label}
+            >
+              <Icon size={18} strokeWidth={2} />
+              <span className="hidden sm:inline">{item.label}</span>
             </a>
           );
         })}
