@@ -172,7 +172,7 @@ export function usePlatformAuth() {
     refreshAdminRequests();
   }, [refreshAdminRequests]);
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async (redirectTo?: string) => {
     if (!supabase) {
       setProfileNotice("Configure as variaveis do Supabase para liberar login com Google.");
       return;
@@ -183,7 +183,7 @@ export function usePlatformAuth() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: window.location.origin
+        redirectTo: redirectTo || window.location.href
       }
     });
 
@@ -227,7 +227,7 @@ export function usePlatformAuth() {
             data: {
               full_name: fullName?.trim() || cleanEmail
             },
-            emailRedirectTo: window.location.origin
+            emailRedirectTo: window.location.href
           }
         });
 

@@ -105,7 +105,7 @@ export function AuthAccessCard({
               </button>
             </form>
 
-            <button className="secondary-flow-action full" type="button" onClick={auth.handleGoogleLogin}>
+            <button className="secondary-flow-action full" type="button" onClick={() => auth.handleGoogleLogin()}>
               <Chrome size={17} />
               Entrar com Google
             </button>

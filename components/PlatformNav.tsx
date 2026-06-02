@@ -25,7 +25,7 @@ export function PlatformNav({ variant = "dark" }: { variant?: "dark" | "light" }
   return (
     <header className={clsx("platform-nav", variant)}>
       <a className="platform-brand" href="/">
-        <span>✨</span>
+        <span>MT</span>
         <div>
           <strong>Melkzedek Tech</strong>
           <small>Plataforma Pro</small>

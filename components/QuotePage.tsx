@@ -14,7 +14,7 @@ import {
   WalletCards
 } from "lucide-react";
 import { AuthAccessCard } from "@/components/AuthAccessCard";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePlatformAuth } from "@/components/usePlatformAuth";
 import { sendQuoteEmails } from "@/lib/emailjs";
 import {
@@ -23,8 +23,10 @@ import {
   getProfileCompleteness,
   quoteQuestions,
   recommendPlan,
+  subscriptionPlans,
   type QuoteAnswers,
-  type QuoteQuestion
+  type QuoteQuestion,
+  type SubscriptionPlan
 } from "@/lib/platform";
 
 type RequestStatus = "idle" | "saving" | "success" | "error";
@@ -36,15 +38,22 @@ export function QuotePage() {
   const [quoteComplete, setQuoteComplete] = useState(false);
   const [requestStatus, setRequestStatus] = useState<RequestStatus>("idle");
   const [requestNotice, setRequestNotice] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
 
   const completeness = useMemo(() => getProfileCompleteness(auth.profile), [auth.profile]);
-  const recommendedPlan = useMemo(() => recommendPlan(answers), [answers]);
+  const recommendedPlan = useMemo(() => selectedPlan ?? recommendPlan(answers), [answers, selectedPlan]);
   const currentQuestion = quoteQuestions[activeQuestionIndex];
   const answeredCount = quoteQuestions.filter((question) => {
     const value = answers[question.id];
     return Array.isArray(value) ? value.length > 0 : Boolean(value?.toString().trim());
   }).length;
   const allAnswersComplete = answeredCount === quoteQuestions.length;
+
+  useEffect(() => {
+    const selectedKey = new URLSearchParams(window.location.search).get("plan");
+    const planFromUrl = subscriptionPlans.find((plan) => plan.key === selectedKey) ?? null;
+    setSelectedPlan(planFromUrl);
+  }, []);
 
   const setQuestionAnswer = (question: QuoteQuestion, value: string | string[]) => {
     setAnswers((current) => ({
@@ -111,7 +120,7 @@ export function QuotePage() {
     setRequestStatus("saving");
     setRequestNotice("");
 
-    const plan = recommendPlan(answers);
+    const plan = recommendedPlan;
     let requestId = crypto.randomUUID();
     let createdAt = new Date().toISOString();
 
@@ -256,7 +265,11 @@ export function QuotePage() {
           <div>
             <p>Pedido guiado</p>
             <h1>Conte o que sua loja precisa.</h1>
-            <span>Responda 5 perguntas simples. Depois eu analiso e indico o melhor caminho.</span>
+            <span>
+              {selectedPlan
+                ? `Voce escolheu ${selectedPlan.name}. Responda 5 perguntas para confirmar as necessidades do site.`
+                : "Responda 5 perguntas simples. Depois eu analiso e indico o melhor caminho."}
+            </span>
           </div>
         </div>
 
@@ -278,10 +291,19 @@ export function QuotePage() {
                 <div className="bot-message">
                   <Bot size={18} />
                   <p>
-                    Vou te guiar passo a passo. No final, voce recebe uma sugestao de
-                    plano para comecar sem pagar por coisa desnecessaria.
+                    {selectedPlan
+                      ? `Plano escolhido: ${selectedPlan.name}. Vou confirmar catalogo, recursos, prazo e operacao antes de enviar o pedido.`
+                      : "Vou te guiar passo a passo. No final, voce recebe uma sugestao de plano para comecar sem pagar por coisa desnecessaria."}
                   </p>
                 </div>
+
+                {selectedPlan && (
+                  <div className="selected-plan-inline">
+                    <span>Plano travado para este pedido</span>
+                    <strong>{selectedPlan.name}</strong>
+                    <small>{selectedPlan.idealFor}</small>
+                  </div>
+                )}
 
                 {quoteQuestions
                   .slice(0, quoteComplete ? quoteQuestions.length : activeQuestionIndex)
@@ -347,7 +369,7 @@ export function QuotePage() {
                   >
                     <div className="summary-top">
                       <div>
-                        <span>Plano sugerido</span>
+                        <span>{selectedPlan ? "Plano escolhido" : "Plano sugerido"}</span>
                         <h3>{recommendedPlan.name}</h3>
                       </div>
                       <WalletCards size={24} />

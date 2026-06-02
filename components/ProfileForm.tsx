@@ -47,7 +47,7 @@ export function ProfileForm({
               <strong>Entre para solicitar</strong>
               <span>Use sua conta Google</span>
             </div>
-            <button className="primary-flow-action compact" type="button" onClick={auth.handleGoogleLogin}>
+            <button className="primary-flow-action compact" type="button" onClick={() => auth.handleGoogleLogin()}>
               <Chrome size={17} />
               Google
             </button>
