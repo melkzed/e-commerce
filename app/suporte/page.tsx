@@ -1,34 +1,34 @@
 import { JsonLd } from "@/components/JsonLd";
-import { QuotePage } from "@/components/QuotePage";
+import { SupportPage } from "@/components/SupportPage";
 import { breadcrumbJsonLd, createPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-const title = "Orçamento de análise";
-const description =
-  "Responda perguntas simples e receba uma sugestão de plano para montar sua loja online com a estrutura certa.";
+const title = "Suporte";
+const description = "Área para abrir tickets, acompanhar respostas e avaliar o atendimento.";
 
 export const metadata = createPageMetadata({
   title,
   description,
-  path: "/orcamento"
+  path: "/suporte"
 });
 
-export default function OrcamentoPage() {
+export default function SuportePage() {
   return (
     <>
       <JsonLd
         data={webPageJsonLd({
+          type: "ContactPage",
           name: title,
           description,
-          path: "/orcamento"
+          path: "/suporte"
         })}
       />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Início", path: "/" },
-          { name: "Orçamento de análise", path: "/orcamento" }
+          { name: "Suporte", path: "/suporte" }
         ])}
       />
-      <QuotePage />
+      <SupportPage />
     </>
   );
 }

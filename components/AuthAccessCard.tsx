@@ -38,7 +38,11 @@ export function AuthAccessCard({
   return (
     <section className="access-gate-card">
       <div className="access-gate-media">
-        <img src="/assets/secure-access-visual.png" alt="" />
+        <div className="access-gate-visual" aria-hidden="true">
+          <LockKeyhole size={36} />
+          <strong>Acesso seguro</strong>
+          <span>Login protegido para salvar perfil, orçamentos e planos da loja.</span>
+        </div>
       </div>
 
       <div className="access-gate-content">
@@ -78,12 +82,12 @@ export function AuthAccessCard({
               )}
 
               <label>
-                Email
+                E-mail
                 <input
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder={adminOnly ? ADMIN_EMAIL : "voce@email.com"}
+                  placeholder={adminOnly ? ADMIN_EMAIL : "você@email.com"}
                   required
                 />
               </label>
@@ -101,7 +105,7 @@ export function AuthAccessCard({
 
               <button className="primary-flow-action full" type="submit" disabled={auth.authActionLoading}>
                 {auth.authActionLoading ? <Loader2 className="spin" size={17} /> : <Mail size={17} />}
-                {mode === "login" ? "Entrar com email" : "Criar conta"}
+                {mode === "login" ? "Entrar com e-mail" : "Criar conta"}
               </button>
             </form>
 
@@ -116,7 +120,7 @@ export function AuthAccessCard({
                 type="button"
                 onClick={() => setMode((current) => (current === "login" ? "register" : "login"))}
               >
-                {mode === "login" ? "Ainda nao tenho conta" : "Ja tenho conta"}
+                {mode === "login" ? "Ainda não tenho conta" : "Já tenho conta"}
               </button>
             )}
           </>

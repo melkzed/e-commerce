@@ -1,17 +1,22 @@
+"use client";
+
 import {
   Home,
   FileText,
   CreditCard,
   User,
+  Headphones,
   Mail,
   ShieldCheck,
   Globe
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/orcamento", label: "Pedidos", icon: FileText },
+  { href: "/orcamento", label: "Orçamento", icon: FileText },
   { href: "/assinaturas", label: "Planos", icon: CreditCard },
+  { href: "/suporte", label: "Suporte", icon: Headphones },
   { href: "/perfil", label: "Perfil", icon: User }
 ];
 
@@ -21,7 +26,12 @@ const legalLinks = [
 ];
 
 export function PlatformFooter() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="platform-footer">
@@ -29,15 +39,15 @@ export function PlatformFooter() {
         {/* Brand */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <div className="footer-logo-icon">MT</div>
-            <div className="footer-logo-text">
-              <strong>Melkzedek Tech</strong>
-              <small>Plataforma Pro</small>
-            </div>
+            <img
+              className="footer-logo-full"
+              src="/brand/melk-zedek-logo-transparent.png"
+              alt="Melk Zedek Tech - Tecnologia que impulsiona negócios"
+            />
           </div>
 
           <p className="footer-tagline">
-            Sistema completo para loja virtual, pedidos, estoque, clientes e pagamentos em um so lugar.
+            Sistema completo para loja virtual, pedidos, estoque, clientes e pagamentos em um só lugar.
           </p>
 
           <div className="footer-badge">
@@ -58,14 +68,14 @@ export function PlatformFooter() {
           </nav>
         </div>
 
-        {/* Servicos */}
+        {/* Serviços */}
         <div className="footer-col">
-          <span className="footer-col-label">Servicos</span>
+          <span className="footer-col-label">Serviços</span>
           <nav>
-            <a href="/orcamento">Solicitar analise</a>
+            <a href="/orcamento">Solicitar orçamento</a>
             <a href="/assinaturas">Ver planos</a>
+            <a href="/suporte">Suporte</a>
             <a href="/perfil">Minha conta</a>
-            <a href="/admin">Painel admin</a>
           </nav>
         </div>
 
@@ -93,7 +103,7 @@ export function PlatformFooter() {
       {/* Bottom bar */}
       <div className="footer-bottom">
         <div className="footer-bottom-left">
-          <span>(c) {currentYear} Melkzedek Tech - Todos os direitos reservados.</span>
+          <span>© {currentYear} Melkzedek Tech - Todos os direitos reservados.</span>
         </div>
 
         <div className="footer-bottom-right">

@@ -24,7 +24,6 @@ import {
   PackageCheck,
   PlugZap,
   RadioTower,
-  Rocket,
   SearchCheck,
   ServerCog,
   ShieldCheck,
@@ -40,23 +39,23 @@ import { subscriptionPlans } from "@/lib/platform";
 
 const platformMetrics = [
   { label: "ROI estimado", value: "4.6x", trend: "em 90 dias" },
-  { label: "Economia mensal", value: "42h", trend: "com automacoes" },
-  { label: "Vendas recuperadas", value: "R$ 18.4k", trend: "carrinho + CRM" },
-  { label: "Suporte e uptime", value: "99.98%", trend: "operacao online" }
+  { label: "Economia mensal", value: "42h", trend: "com automações" },
+    { label: "Vendas recuperadas", value: "R$ 18.400", trend: "carrinho + CRM" },
+  { label: "Suporte e uptime", value: "99.98%", trend: "operação online" }
 ];
 
 const commandStats = [
   ["ROI", "4.6x", "estimado"],
-  ["Recuperado", "R$ 18.4k", "carrinho"],
-  ["Tempo salvo", "42h", "por mes"],
-  ["Conversao", "+28%", "checkout"]
+    ["Recuperado", "R$ 18.400", "carrinho"],
+  ["Tempo salvo", "42h", "por mês"],
+  ["Conversão", "+28%", "checkout"]
 ];
 
 const revenueBars = [38, 45, 52, 58, 64, 72, 79, 88, 96, 106, 118, 132];
 
 const cockpitRows = [
-  { store: "Checkout + Pix", plan: "Conversao", revenue: "+28%", status: "Ativar" },
-  { store: "Carrinho abandonado", plan: "Automacao", revenue: "R$ 18.4k", status: "Recuperar" },
+  { store: "Checkout + Pix", plan: "Conversão", revenue: "+28%", status: "Ativar" },
+    { store: "Carrinho abandonado", plan: "Automação", revenue: "R$ 18.400", status: "Recuperar" },
   { store: "CRM de recompra", plan: "Retencao", revenue: "+312 leads", status: "Engajar" },
   { store: "Plano recomendado", plan: "Loja Completa", revenue: "4.6x ROI", status: "Assinar" }
 ];
@@ -70,17 +69,17 @@ const enterpriseModules = [
   {
     icon: Factory,
     title: "Controle da loja",
-    text: "Estoque, fornecedores, compras, entradas, saidas e rotina diaria em um painel so."
+    text: "Estoque, fornecedores, compras, entradas, saídas e rotina diária em um painel só."
   },
   {
     icon: UsersRound,
     title: "Clientes",
-    text: "Historico de contato, interesse de compra, tarefas e acompanhamento de cada cliente."
+    text: "Histórico de contato, interesse de compra, tarefas e acompanhamento de cada cliente."
   },
   {
     icon: CircleDollarSign,
     title: "Dinheiro",
-    text: "Contas a receber, contas a pagar, fluxo de caixa e previsao do que vai entrar."
+    text: "Contas a receber, contas a pagar, fluxo de caixa e previsão do que vai entrar."
   },
   {
     icon: Truck,
@@ -89,158 +88,143 @@ const enterpriseModules = [
   },
   {
     icon: BrainCircuit,
-    title: "Relatorios",
-    text: "Veja o que vende mais, o que esta parado e onde a loja pode melhorar."
+    title: "Relatórios",
+    text: "Veja o que vende mais, o que está parado e onde a loja pode melhorar."
   },
   {
     icon: Workflow,
-    title: "Automacoes",
-    text: "Mensagens, avisos de estoque, cobranca e campanhas para ganhar tempo."
+    title: "Automações",
+    text: "Mensagens, avisos de estoque, cobrança e campanhas para ganhar tempo."
   },
   {
     icon: ShieldCheck,
-    title: "Seguranca",
-    text: "Cada pessoa ve apenas o que precisa. Os dados ficam organizados e protegidos."
+    title: "Segurança",
+    text: "Cada pessoa vê apenas o que precisa. Os dados ficam organizados e protegidos."
   },
   {
     icon: ShoppingCart,
     title: "Checkout otimizado",
-    text: "Fluxo de compra com menos atrito, recuperacao de carrinho e conversao mais alta."
-  },
-  {
-    icon: CreditCard,
-    title: "Gateway de pagamento",
-    text: "Pix, cartao, boleto, split de pagamento e conciliacao financeira em um so fluxo."
+    text: "Fluxo de compra com menos atrito, recuperação de carrinho e conversão mais alta."
   },
   {
     icon: ChartNetwork,
     title: "CRM comercial",
-    text: "Funil de vendas, leads, follow-up, segmentacao e historico completo do cliente."
+    text: "Funil de vendas, leads, follow-up, segmentação e histórico completo do cliente."
   },
   {
     icon: ServerCog,
     title: "ERP integrado",
-    text: "Pedidos, estoque, financeiro, notas e operacao conectados sem retrabalho manual."
+    text: "Pedidos, estoque, financeiro, notas e operação conectados sem retrabalho manual."
   },
   {
     icon: ClipboardList,
     title: "OMS de pedidos",
-    text: "Gestao do ciclo do pedido: recebido, separado, faturado, enviado e entregue."
+    text: "Gestão do ciclo do pedido: recebido, separado, faturado, enviado e entregue."
   },
   {
     icon: ChartNoAxesCombined,
     title: "BI e analytics",
-    text: "Indicadores, cohort, ticket medio, LTV, CAC e margem para decisoes mais precisas."
+    text: "Indicadores, cohort, ticket médio, LTV, CAC e margem para decisões mais precisas."
   },
   {
     icon: SearchCheck,
-    title: "SEO tecnico",
-    text: "URLs limpas, performance, metadados, schema e base preparada para trafego organico."
-  },
-  {
-    icon: PlugZap,
-    title: "API e webhooks",
-    text: "Integracoes com marketplaces, ERPs, automacoes, WhatsApp e sistemas externos."
-  },
-  {
-    icon: Rocket,
-    title: "Core Web Vitals",
-    text: "Performance, estabilidade visual e carregamento rapido para melhorar experiencia."
+    title: "SEO técnico",
+    text: "URLs limpas, performance, metadados, schema e base preparada para tráfego orgânico."
   },
   {
     icon: Gauge,
     title: "SLA e monitoramento",
-    text: "Alertas, logs, uptime e acompanhamento tecnico para manter a operacao no ar."
+    text: "Alertas, logs, uptime e acompanhamento técnico para manter a operação no ar."
   }
 ];
 
 const proofMetrics = [
   {
     value: "4.6x",
-    label: "ROI estimado",
-    text: "Projecao para lojas que ativam checkout, carrinho recuperado, CRM e campanhas."
+    label: "retorno planejado",
+    text: "A assinatura ajuda a transformar a loja em uma operação mensurável: cada recurso entra com objetivo claro, como vender mais, recuperar pedidos ou reduzir retrabalho."
   },
   {
     value: "+28%",
-    label: "mais conversao",
-    text: "Fluxo de compra com menos atrito, Pix, cartao e chamadas claras para finalizar pedido."
+    label: "compra mais simples",
+    text: "O cliente encontra o produto, entende o pedido e finaliza a compra com menos etapas. Checkout, Pix, cartão e chamadas diretas reduzem abandono."
   },
   {
-    value: "R$ 18.4k",
-    label: "em vendas recuperadas",
-    text: "Automacoes para lembrar clientes, recuperar carrinhos e puxar recompra."
+    value: "R$ 18.400",
+    label: "oportunidades recuperadas",
+    text: "Carrinhos abandonados, clientes indecisos e recompras deixam de ficar esquecidos. A plataforma cria pontos de contato para trazer o cliente de volta."
   },
   {
     value: "42h",
-    label: "economizadas por mes",
-    text: "Rotinas repetidas deixam de consumir tempo da equipe e ficam no painel."
+    label: "menos trabalho manual",
+    text: "Pedidos, estoque, clientes, suporte e relatórios ficam organizados em um só painel, diminuindo planilhas, mensagens soltas e conferências repetidas."
   }
 ];
 
 const trustSignals = [
   {
     icon: CreditCard,
-    title: "Checkout preparado",
-    text: "Pagamento online, Pix, cartao, boleto e base para conciliacao financeira."
+    title: "Venda com pagamento organizado",
+    text: "A loja já nasce preparada para receber pedidos com Pix, cartão ou boleto, mantendo o fluxo de compra mais confiável para o cliente e mais fácil de acompanhar para você."
   },
   {
     icon: ChartNoAxesCombined,
-    title: "Decisao por dados",
-    text: "Ticket medio, conversao, LTV, CAC, margem e produtos com melhor desempenho."
+    title: "Decisões menos no chute",
+    text: "Você passa a enxergar o que vende melhor, quais produtos ficam parados, quais clientes voltam e onde a operação precisa melhorar antes de investir mais."
   },
   {
     icon: PlugZap,
-    title: "Integracoes",
-    text: "API, webhooks, WhatsApp, ERP, marketplaces e automacoes quando a loja crescer."
+    title: "Estrutura pronta para crescer",
+    text: "Quando a loja precisar de WhatsApp, ERP, marketplace, automações ou API, a base já está pensada para conectar sistemas sem refazer tudo do zero."
   },
   {
     icon: ShieldCheck,
-    title: "Operacao protegida",
-    text: "Permissoes por usuario, historico, backup, monitoramento e separacao por loja."
+    title: "Mais controle e segurança",
+    text: "Dados de clientes, pedidos, acessos e histórico ficam separados e organizados, com permissões e registros que deixam a rotina mais segura para a equipe."
   }
 ];
 
 const faqItems = [
   {
     question: "Preciso entender tecnologia para usar?",
-    answer: "Nao. A proposta e entregar um painel claro para produtos, pedidos, clientes e dinheiro sem depender de termos tecnicos."
+    answer: "Não. A proposta é entregar um painel claro para produtos, pedidos, clientes e dinheiro sem depender de termos técnicos."
   },
   {
     question: "Qual plano eu devo assinar?",
-    answer: "O pedido guiado cruza catalogo, prazo, recursos e nivel da operacao para sugerir o plano mais coerente."
+    answer: "O orçamento guiado cruza catálogo, prazo, recursos e nível da operação para sugerir o plano mais coerente."
   },
   {
     question: "A plataforma serve para loja pequena?",
-    answer: "Sim. Voce pode comecar com uma estrutura menor e evoluir para recursos de CRM, ERP, automacoes e relatorios."
+    answer: "Sim. Você pode começar com uma estrutura menor e evoluir para recursos de CRM, ERP, automações e relatórios."
   },
   {
     question: "Consigo acompanhar resultado?",
-    answer: "Sim. A ideia e mostrar vendas, conversao, carrinhos, estoque, clientes e proximas acoes em paineis simples."
+    answer: "Sim. A ideia é mostrar vendas, conversão, carrinhos, estoque, clientes e próximas ações em painéis simples."
   },
   {
     question: "Meus dados ficam separados?",
-    answer: "Sim. A arquitetura separa cada loja, usuarios, permissoes, arquivos e historico para reduzir bagunca operacional."
+    answer: "Sim. A arquitetura separa cada loja, usuários, permissões, arquivos e histórico para reduzir bagunça operacional."
   },
   {
     question: "Posso integrar outros sistemas depois?",
-    answer: "Sim. Os planos maiores ja consideram API, webhooks e integracoes para conectar a operacao com sistemas externos."
+    answer: "Sim. Os planos maiores já consideram API, webhooks e integrações para conectar a operação com sistemas externos."
   }
 ];
 
 const architecturePillars = [
-  { icon: DatabaseZap, label: "Banco de dados", detail: "informacoes da loja bem organizadas" },
-  { icon: LockKeyhole, label: "Permissoes", detail: "cada usuario com seu nivel de acesso" },
-  { icon: RadioTower, label: "Tempo real", detail: "pedidos e avisos aparecem rapido" },
-  { icon: CloudCog, label: "Automacoes", detail: "tarefas repetidas rodam sozinhas" },
-  { icon: PackageCheck, label: "Arquivos", detail: "imagens e documentos em lugar seguro" },
-  { icon: ClipboardList, label: "Historico", detail: "registro do que aconteceu no sistema" }
+  { icon: DatabaseZap, label: "Perfil", detail: "seus dados ficam salvos para não repetir tudo" },
+  { icon: LockKeyhole, label: "Login seguro", detail: "cada orçamento fica ligado à sua conta" },
+  { icon: RadioTower, label: "Orçamento", detail: "você responde perguntas simples sobre a loja" },
+  { icon: CloudCog, label: "Análise", detail: "eu vejo plano, recursos, prazo e prioridade" },
+  { icon: PackageCheck, label: "Proposta", detail: "você recebe o caminho indicado para começar" },
+  { icon: ClipboardList, label: "Histórico", detail: "orçamentos, suporte e respostas ficam registrados" }
 ];
 
 const architectureSatellites = [
-  { icon: UsersRound, label: "Usuarios", detail: "acesso seguro e personalizado" },
-  { icon: Smartphone, label: "Dispositivos", detail: "acesso de onde estiver" },
-  { icon: BellRing, label: "Notificacoes", detail: "alertas inteligentes e automaticos" },
-  { icon: BarChart3, label: "Relatorios", detail: "decisoes com dados reais" }
+  { icon: UsersRound, label: "Cliente", detail: "acompanha tudo pela plataforma" },
+  { icon: Smartphone, label: "Suporte", detail: "dúvidas e tickets no mesmo lugar" },
+  { icon: BellRing, label: "E-mail", detail: "confirmações chegam automaticamente" },
+  { icon: BarChart3, label: "Painel", detail: "admin visualiza e organiza cada etapa" }
 ];
 
 const architectureLinks = [
@@ -280,13 +264,13 @@ const architectureNodes = [
 
 const masterHighlights = [
   "vendas, pedidos e clientes em um painel",
-  "lojas que precisam de atencao",
+  "lojas que precisam de atenção",
   "uso do sistema e arquivos",
   "avisos importantes em tempo real"
 ];
 
 const merchantHighlights = [
-  "vendas do dia, mes e ticket medio",
+  "vendas do dia, mês e ticket médio",
   "pedidos atrasados e produtos sem estoque",
   "metas e comparativos simples",
   "lucro estimado e clientes que voltam"
@@ -324,8 +308,8 @@ function CommandCenterMockup() {
       <div className="console-main-grid">
         <div className="console-chart-panel">
           <div className="console-panel-head">
-            <span>Projecao de crescimento</span>
-            <strong>Proximos 90 dias</strong>
+            <span>Projeção de crescimento</span>
+            <strong>Próximos 90 dias</strong>
           </div>
           <div className="console-bars" aria-hidden="true">
             {revenueBars.map((height, index) => (
@@ -337,11 +321,11 @@ function CommandCenterMockup() {
         <div className="console-health-panel">
           <div className="console-panel-head">
             <span>Impacto da assinatura</span>
-            <strong>Ganhos mais rapidos</strong>
+            <strong>Ganhos mais rápidos</strong>
           </div>
           {[
-            ["Conversao", "82%"],
-            ["Automacao", "76%"],
+            ["Conversão", "82%"],
+            ["Automação", "76%"],
             ["Retencao", "68%"]
           ].map(([label, width]) => (
             <div className="health-line" key={label}>
@@ -383,7 +367,7 @@ function HighlightPanel({
   return (
     <article className="dashboard-highlight">
       <div className="dashboard-highlight-head">
-        <Icon size={22} />
+        <Icon size={22} aria-hidden="true" />
         <div>
           <span>{eyebrow}</span>
           <h3>{title}</h3>
@@ -416,8 +400,8 @@ export function LandingPage() {
   };
 
   return (
-    <main className="landing-shell enterprise-landing" onPointerMove={handlePointerMove}>
-      <section className="enterprise-hero">
+    <main className="landing-shell enterprise-landing" onPointerMove={handlePointerMove} aria-labelledby="home-title">
+      <section className="enterprise-hero" aria-labelledby="home-title">
         <div className="enterprise-grid-lines" aria-hidden="true" />
         <motion.div className="enterprise-motion-rails" style={{ x: railX, y: railY }} aria-hidden="true">
           <span />
@@ -430,19 +414,20 @@ export function LandingPage() {
             Sistema completo para vender online
           </motion.p>
           <motion.h1
+            id="home-title"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
           >
-            Venda online e controle sua loja em um so lugar.
+            Venda online e controle sua loja em um só lugar.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.16 }}
           >
-            Uma plataforma para loja virtual, pedidos, estoque, clientes, pagamentos e relatorios.
-            Voce acompanha tudo sem precisar entender termos tecnicos.
+            Uma plataforma para loja virtual, pedidos, estoque, clientes, pagamentos e relatórios.
+            Você acompanha tudo sem precisar entender termos técnicos.
           </motion.p>
 
           <motion.div
@@ -452,8 +437,8 @@ export function LandingPage() {
             transition={{ delay: 0.24 }}
           >
             <a href="/orcamento" className="launch-cta">
-              Pedir analise
-              <ArrowRight size={18} />
+              Solicitar orçamento
+              <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a href="#arquitetura" className="ghost-cta">
               Ver como funciona
@@ -474,13 +459,13 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="enterprise-section">
+      <section className="enterprise-section" aria-labelledby="modules-title">
         <div className="section-kicker">
           <p className="landing-eyebrow">Tudo conectado</p>
-          <h2>Mais que uma loja virtual: um painel para cuidar da venda inteira.</h2>
+          <h2 id="modules-title">Mais que uma loja virtual: um painel para cuidar da venda inteira.</h2>
           <span>
             A loja vende, o painel organiza pedidos, o estoque avisa quando algo esta acabando
-            e os relatorios mostram o que merece atencao.
+            e os relatórios mostram o que merece atenção.
           </span>
         </div>
 
@@ -490,7 +475,7 @@ export function LandingPage() {
 
             return (
               <motion.article key={item.title} whileHover={{ y: -6 }}>
-                <Icon size={22} />
+                <Icon size={22} aria-hidden="true" />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </motion.article>
@@ -499,13 +484,13 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="enterprise-section proof-section">
+      <section className="enterprise-section proof-section" aria-labelledby="proof-title">
         <div className="section-kicker">
           <p className="landing-eyebrow">Motivos para assinar</p>
-          <h2>Uma plataforma pensada para vender mais e operar com menos retrabalho.</h2>
+          <h2 id="proof-title">Assine para vender com mais clareza, controle e menos tarefas soltas.</h2>
           <span>
-            O painel mostra potencial de retorno, gargalos da loja e os recursos que
-            deixam a operacao pronta para crescer com controle.
+            A ideia não é apenas ter uma loja bonita. É reunir venda, pagamento, estoque,
+            clientes e atendimento em uma rotina que você consegue entender e melhorar.
           </span>
         </div>
 
@@ -525,7 +510,7 @@ export function LandingPage() {
 
             return (
               <article key={item.title}>
-                <Icon size={24} />
+                <Icon size={24} aria-hidden="true" />
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -536,13 +521,14 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="enterprise-split-section" id="arquitetura">
+      <section className="enterprise-split-section" id="arquitetura" aria-labelledby="architecture-title">
         <div className="section-kicker">
-          <p className="landing-eyebrow">Base segura</p>
-          <h2>Preparado para crescer sem baguncar os dados da loja.</h2>
+          <p className="landing-eyebrow">Como funciona</p>
+          <h2 id="architecture-title">Do orçamento ao painel: tudo conectado em um fluxo simples.</h2>
           <span>
-            Produtos, clientes, pedidos, pagamentos, imagens e usuarios ficam separados e
-            organizados. Isso ajuda a loja crescer com seguranca.
+            Você cria o perfil, escolhe o plano, responde o orçamento guiado e acompanha
+            suporte e respostas pela plataforma. No admin, eu vejo cada detalhe para montar
+            o melhor caminho para sua loja.
           </span>
         </div>
 
@@ -594,9 +580,9 @@ export function LandingPage() {
           </svg>
 
           <div className="architecture-core neural-core">
-            <Network size={26} />
-            <strong>Loja</strong>
-            <span>cada loja separada</span>
+            <Network size={26} aria-hidden="true" />
+            <strong>Plataforma</strong>
+            <span>cliente, orçamento e admin conectados</span>
           </div>
 
           <div className="architecture-pillars neural-pillars">
@@ -605,7 +591,7 @@ export function LandingPage() {
 
               return (
                 <article key={pillar.label} className={`neural-card neural-card-${index + 1}`}>
-                  <Icon size={20} />
+                  <Icon size={20} aria-hidden="true" />
                   <strong>{pillar.label}</strong>
                   <span>{pillar.detail}</span>
                 </article>
@@ -620,7 +606,7 @@ export function LandingPage() {
               return (
                 <article key={item.label} className={`neural-satellite neural-satellite-${index + 1}`}>
                   <span>
-                    <Icon size={22} />
+                    <Icon size={22} aria-hidden="true" />
                   </span>
                   <strong>{item.label}</strong>
                   <small>{item.detail}</small>
@@ -628,35 +614,52 @@ export function LandingPage() {
               );
             })}
           </div>
+
+          <div className="architecture-process-note">
+            {[
+              ["01", "Escolha o plano", "Veja a cobertura que combina melhor com o momento da sua loja."],
+              ["02", "Preencha o orçamento", "Responda perguntas simples sobre produtos, prazo e recursos desejados."],
+              ["03", "Receba a análise", "Eu avalio o perfil, o plano escolhido e as necessidades do projeto."],
+              ["04", "Acompanhe pelo painel", "O histórico, suporte e próximos passos ficam salvos na plataforma."]
+            ].map(([step, label, description]) => (
+              <span key={step}>
+                <strong>{step}</strong>
+                <i>
+                  <em>{label}</em>
+                  <small>{description}</small>
+                </i>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="enterprise-section dashboards-section">
+      <section className="enterprise-section dashboards-section" aria-labelledby="dashboards-title">
         <div className="section-kicker">
-          <p className="landing-eyebrow">Paineis claros</p>
-          <h2>O dono da loja entende rapido o que esta acontecendo.</h2>
+          <p className="landing-eyebrow">Painéis claros</p>
+          <h2 id="dashboards-title">O dono da loja entende rápido o que esta acontecendo.</h2>
         </div>
 
         <div className="dashboard-highlight-grid">
           <HighlightPanel
             eyebrow="Painel principal"
-            title="Tudo que precisa de atencao"
+            title="Tudo que precisa de atenção"
             icon={Command}
             items={masterHighlights}
           />
           <HighlightPanel
             eyebrow="Painel da loja"
-            title="Rotina diaria mais simples"
+            title="Rotina diária mais simples"
             icon={Gauge}
             items={merchantHighlights}
           />
         </div>
       </section>
 
-      <section className="enterprise-timeline-section">
+      <section className="enterprise-timeline-section" aria-labelledby="plans-title">
         <div className="section-kicker">
           <p className="landing-eyebrow">Planos simples</p>
-          <h2>Comece pequeno e aumente quando a loja precisar.</h2>
+          <h2 id="plans-title">Comece pequeno e aumente quando a loja precisar.</h2>
         </div>
 
         <div className="enterprise-plan-row">
@@ -667,20 +670,20 @@ export function LandingPage() {
               <p>{plan.idealFor}</p>
               <a href="/assinaturas">
                 Ver cobertura
-                <ArrowRight size={16} />
+                <ArrowRight size={16} aria-hidden="true" />
               </a>
             </motion.article>
           ))}
         </div>
       </section>
 
-      <section className="enterprise-section faq-section">
+      <section className="enterprise-section faq-section" aria-labelledby="faq-title">
         <div className="section-kicker">
-          <p className="landing-eyebrow">Duvidas comuns</p>
-          <h2>Respostas rapidas para decidir com mais seguranca.</h2>
+          <p className="landing-eyebrow">Dúvidas comuns</p>
+          <h2 id="faq-title">Respostas rápidas para decidir com mais segurança.</h2>
           <span>
-            Antes de pedir a analise, veja como a plataforma ajuda no comeco,
-            no crescimento e na organizacao da loja.
+            Antes de pedir a análise, veja como a plataforma ajuda no começo,
+            no crescimento e na organização da loja.
           </span>
         </div>
 
@@ -694,20 +697,20 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="enterprise-final-cta">
+      <section className="enterprise-final-cta" aria-labelledby="final-cta-title">
         <div>
-          <Sparkles size={22} />
+          <Sparkles size={22} aria-hidden="true" />
           <p className="landing-eyebrow">Pronto para vender melhor</p>
-          <h2>Descubra o plano ideal antes de assinar.</h2>
+          <h2 id="final-cta-title">Descubra o plano ideal antes de assinar.</h2>
           <span>
-            Responda algumas perguntas e receba uma sugestao clara com recursos,
+            Responda algumas perguntas e receba uma sugestão clara com recursos,
             prioridade e caminho de crescimento para sua loja.
           </span>
         </div>
 
         <a href="/orcamento" className="launch-cta">
-          Pedir analise agora
-          <Zap size={18} />
+          Solicitar orçamento agora
+          <Zap size={18} aria-hidden="true" />
         </a>
       </section>
     </main>

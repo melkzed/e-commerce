@@ -1,6 +1,7 @@
 "use client";
 
 import { BadgeCheck, Chrome, Loader2, LockKeyhole, LogOut } from "lucide-react";
+import { TaxIdField } from "@/components/TaxIdField";
 import { isSupabaseConfigured } from "@/lib/supabase/client";
 import { getProfileCompleteness } from "@/lib/platform";
 import type { usePlatformAuth } from "@/components/usePlatformAuth";
@@ -29,7 +30,7 @@ export function ProfileForm({
         {auth.authLoading ? (
           <div className="loading-row">
             <Loader2 className="spin" size={18} />
-            Verificando sessao
+            Verificando sessão
           </div>
         ) : auth.isLoggedIn ? (
           <>
@@ -81,7 +82,7 @@ export function ProfileForm({
           />
         </label>
         <label>
-          Email
+          E-mail
           <input value={auth.profile.email} disabled />
         </label>
         <label>
@@ -92,15 +93,7 @@ export function ProfileForm({
             placeholder="Nome da empresa ou marca"
           />
         </label>
-        <label>
-          CPF/CNPJ
-          <input
-            value={auth.profile.taxId}
-            disabled={auth.taxIdLocked}
-            onChange={(event) => auth.handleProfileChange("taxId", event.target.value)}
-            placeholder="CPF ou CNPJ"
-          />
-        </label>
+        <TaxIdField auth={auth} />
         <label>
           Telefone
           <input
@@ -114,7 +107,7 @@ export function ProfileForm({
           <input
             value={auth.profile.segment}
             onChange={(event) => auth.handleProfileChange("segment", event.target.value)}
-            placeholder="Moda, mercado, servicos..."
+            placeholder="Moda, mercado, serviços..."
           />
         </label>
         <label className="wide-field">

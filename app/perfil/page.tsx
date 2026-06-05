@@ -1,14 +1,12 @@
-import type { Metadata } from "next";
 import { ProfilePage } from "@/components/ProfilePage";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Perfil",
-  description: "Complete seus dados para solicitar uma analise da sua loja online.",
-  robots: {
-    index: false,
-    follow: false
-  }
-};
+  description: "Complete seus dados para solicitar uma análise da sua loja online.",
+  path: "/perfil",
+  noIndex: true
+});
 
 export default function PerfilPage() {
   return <ProfilePage />;
